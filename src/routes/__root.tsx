@@ -77,14 +77,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Akshay Murali — Data Scientist, ML Engineer & Python Developer" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Akshay Murali — Data Scientist and Machine Learning Engineer building fraud detection systems, AI-powered tools, and intelligent IoT solutions.",
+      },
+      { name: "author", content: "Akshay Murali" },
+      {
+        name: "keywords",
+        content:
+          "Akshay Murali, Data Scientist, Machine Learning Engineer, Python Developer, Data Analyst, ML Portfolio, Bangalore, Fraud Detection, MedConnect",
+      },
+      { name: "robots", content: "index, follow" },
+      { name: "theme-color", content: "#0B1120" },
+      { property: "og:site_name", content: "Akshay Murali" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:locale", content: "en_US" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:creator", content: "@akshaym" },
     ],
     links: [
       {
