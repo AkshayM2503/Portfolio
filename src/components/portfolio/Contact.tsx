@@ -50,7 +50,7 @@ export function Contact() {
       id="contact"
       eyebrow="Contact"
       title={<>Let's build something <span className="text-gradient">together</span>.</>}
-      subtitle="Open to Data Science, ML, Analytics, and Software Engineering roles."
+      subtitle="Interested in Data Analyst and Business Intelligence opportunities."
     >
       <div className="grid gap-8 md:grid-cols-[1.2fr_1fr]">
         <Reveal direction="left">

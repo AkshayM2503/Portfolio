@@ -77,17 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Akshay Murali — Data Scientist, ML Engineer & Python Developer" },
+      { title: "Akshay Murali — Data Analyst & Business Intelligence Portfolio" },
       {
         name: "description",
         content:
-          "Portfolio of Akshay Murali — Data Scientist and Machine Learning Engineer building fraud detection systems, AI-powered tools, and intelligent IoT solutions.",
+          "Portfolio of Akshay Murali, an M.Sc. Computer Science student at RPTU interested in Data Analyst and Business Intelligence opportunities.",
       },
       { name: "author", content: "Akshay Murali" },
       {
         name: "keywords",
         content:
-          "Akshay Murali, Data Scientist, Machine Learning Engineer, Python Developer, Data Analyst, ML Portfolio, Bangalore, Fraud Detection, MedConnect",
+          "Akshay Murali, Data Analyst, Business Intelligence, Computer Science, Python, SQL, Power BI, RPTU, Kaiserslautern",
       },
       { name: "robots", content: "index, follow" },
       { name: "theme-color", content: "#0B1120" },
