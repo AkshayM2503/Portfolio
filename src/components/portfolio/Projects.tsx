@@ -1,12 +1,12 @@
 import { Section } from "./Section";
 import { Stagger, itemVariants } from "./Reveal";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ShieldCheck, Stethoscope, TrendingUp, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, CloudSun, ShieldCheck, TrendingUp, type LucideIcon } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
 
 const icons: Record<string, LucideIcon> = {
   ShieldCheck,
-  Stethoscope,
+  CloudSun,
   TrendingUp,
 };
 
@@ -16,7 +16,7 @@ export function Projects() {
       id="projects"
       eyebrow="Featured Projects"
       title={<>Work that <span className="text-gradient">moves the needle</span>.</>}
-      subtitle="Selected projects spanning fraud analytics, healthcare automation, and market forecasting."
+      subtitle="Analytics projects across motorsport, weather forecasting, and financial fraud detection."
     >
       <Stagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" stagger={0.1}>
         {portfolio.projects.map((p) => {

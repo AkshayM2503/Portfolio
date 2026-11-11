@@ -29,7 +29,7 @@ export function Hero() {
         >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-muted-foreground backdrop-blur">
             <Sparkles className="size-3.5 text-secondary" />
-            Available for Data Science & ML roles
+            M.Sc. Computer Science Student · RPTU
           </div>
 
           <h1 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[1.02] tracking-tight">
@@ -105,12 +105,12 @@ export function Hero() {
             </div>
 
             <div className="glass absolute -bottom-6 -left-4 rounded-2xl px-4 py-3 text-left shadow-elegant">
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Now</div>
-              <div className="text-sm font-medium">SDE Intern @ Viral Trade</div>
+              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Studying</div>
+              <div className="text-sm font-medium">M.Sc. Computer Science · RPTU</div>
             </div>
             <div className="glass absolute -right-4 -top-2 rounded-2xl px-4 py-3 text-left shadow-elegant">
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Patent</div>
-              <div className="text-sm font-medium">MedConnect · 2024</div>
+              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Recognition</div>
+              <div className="text-sm font-medium">MedConnect Patent</div>
             </div>
           </div>
         </motion.div>
