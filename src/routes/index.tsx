@@ -72,6 +72,7 @@ export const Route = createFileRoute("/")({
                 "Fraud Detection",
                 "PostgreSQL",
               ],
+              knowsLanguage: portfolio.languages,
               sameAs: [portfolio.linkedin, portfolio.github],
             },
             {

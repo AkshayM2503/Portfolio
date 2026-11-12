@@ -22,7 +22,8 @@ export function Counter({
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / duration);
       const eased = 1 - Math.pow(1 - t, 3);
-      setValue(Math.round(eased * to));
+      const precision = Number.isInteger(to) ? 1 : 100;
+      setValue(Math.round(eased * to * precision));
       if (t < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -32,7 +33,7 @@ export function Counter({
   return (
     <span ref={ref}>
       {prefix}
-      {value}
+      {Number.isInteger(to) ? value : (value / 100).toFixed(2)}
       {suffix}
     </span>
   );
