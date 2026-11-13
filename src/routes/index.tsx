@@ -12,6 +12,7 @@ import { Certifications } from "@/components/portfolio/Certifications";
 import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
 import { portfolio } from "@/data/portfolio";
+import { projects } from "@/data/projects";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -107,15 +108,15 @@ export const Route = createFileRoute("/")({
               "@type": "ItemList",
               "@id": "/#projects",
               name: "Data Analytics Projects",
-              itemListElement: portfolio.projects.map((p, i) => ({
+              itemListElement: projects.map((p, i) => ({
                 "@type": "ListItem",
                 position: i + 1,
                 item: {
                   "@type": "CreativeWork",
                   name: p.title,
-                  description: p.description,
-                  keywords: p.tech.join(", "),
-                  url: `/#projects`,
+                  description: p.summary,
+                  keywords: p.technologies.join(", "),
+                  url: `https://akshay-creative-hub.lovable.app/projects/${p.slug}`,
                   creator: { "@id": "/#person" },
                 },
               })),
