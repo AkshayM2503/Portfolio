@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap will be added once a canonical domain is set.
+Sitemap: https://akshay-creative-hub.lovable.app/sitemap.xml

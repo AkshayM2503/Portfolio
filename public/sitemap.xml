@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- BASE_URL: set once a canonical domain is chosen. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/</loc>
+    <loc>https://akshay-creative-hub.lovable.app/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://akshay-creative-hub.lovable.app/projects/weather-forecast-accuracy-analytics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akshay-creative-hub.lovable.app/projects/formula-1-analytics-driver-prediction</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akshay-creative-hub.lovable.app/projects/synthetic-data-generator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akshay-creative-hub.lovable.app/projects/fraud-detection-system</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akshay-creative-hub.lovable.app/projects/smart-medicine-dispensing-atm</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

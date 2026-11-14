@@ -12,7 +12,9 @@ function ProjectError({ error, reset }: ErrorComponentProps) {
       <div className="max-w-md">
         <h1 className="font-display text-2xl font-semibold">This project page didn’t load</h1>
         <p className="mt-3 text-sm text-muted-foreground">
-          {error instanceof Error ? error.message : "Please try again or return to the projects list."}
+          {error instanceof Error
+            ? error.message
+            : "Please try again or return to the projects list."}
         </p>
         <div className="mt-6 flex justify-center gap-3">
           <Button
@@ -24,7 +26,9 @@ function ProjectError({ error, reset }: ErrorComponentProps) {
             Try again
           </Button>
           <Button variant="outline" asChild>
-            <Link to="/" hash="projects">Back to Projects</Link>
+            <Link to="/" hash="projects">
+              Back to Projects
+            </Link>
           </Button>
         </div>
       </div>
@@ -40,7 +44,9 @@ function ProjectNotFound() {
         <h1 className="mt-3 font-display text-2xl font-semibold">Project not found</h1>
         <p className="mt-3 text-sm text-muted-foreground">This project page isn’t available.</p>
         <Button variant="outline" asChild className="mt-6">
-          <Link to="/" hash="projects">Back to Projects</Link>
+          <Link to="/" hash="projects">
+            Back to Projects
+          </Link>
         </Button>
       </div>
     </div>

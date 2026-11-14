@@ -22,7 +22,10 @@ function DetailSection({
           <ul className="mt-4 space-y-3 text-sm leading-7 text-muted-foreground sm:text-base">
             {items.map((item) => (
               <li key={item} className="flex gap-3">
-                <span aria-hidden="true" className="mt-3 size-1.5 shrink-0 rounded-full bg-primary" />
+                <span
+                  aria-hidden="true"
+                  className="mt-3 size-1.5 shrink-0 rounded-full bg-primary"
+                />
                 <span>{item}</span>
               </li>
             ))}
@@ -92,10 +95,14 @@ export function ProjectDetail({ project }: { project: ProjectDefinition }) {
 
         <DetailSection number="02" title="Project objectives" items={project.objectives} />
         <DetailSection number="03" title="Key features" items={project.features} />
-        <DetailSection number="04" title="Technical implementation" items={project.implementation} />
+        <DetailSection
+          number="04"
+          title="Technical implementation"
+          items={project.implementation}
+        />
         <DetailSection number="05" title="Results and achievements" items={project.results} />
 
-        <DashboardViewer project={project} />
+        <DashboardViewer key={project.slug} project={project} />
 
         <div className="pt-8">
           <Button variant="outline" asChild>

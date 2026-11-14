@@ -98,13 +98,8 @@ export const projects: ProjectDefinition[] = [
     overview:
       "Developed at Altimetrik, this GPT-4-powered Streamlit synthetic data generator was created to reduce manual data preparation time. The documented outcome was a 60% reduction in manual preparation time.",
     objectives: ["Reduce manual data preparation time with a synthetic data generator."],
-    features: [
-      "GPT-4-powered synthetic data generation.",
-      "Streamlit application interface.",
-    ],
-    implementation: [
-      "The documented implementation uses GPT-4 and Streamlit.",
-    ],
+    features: ["GPT-4-powered synthetic data generation.", "Streamlit application interface."],
+    implementation: ["The documented implementation uses GPT-4 and Streamlit."],
     technologies: ["Python", "Streamlit", "GPT-4"],
     results: ["Reduced manual data preparation time by 60%."],
     repositoryUrl: "",
@@ -135,10 +130,7 @@ export const projects: ProjectDefinition[] = [
       "Random Forest, XGBoost, and SVM models were optimized and evaluated using reusable workflows.",
     ],
     technologies: ["Python", "Pandas", "SQL", "Random Forest", "XGBoost", "SVM"],
-    results: [
-      "Analyzed more than 6 million transactions.",
-      "Achieved 92% fraud-model recall.",
-    ],
+    results: ["Analyzed more than 6 million transactions.", "Achieved 92% fraud-model recall."],
     repositoryUrl: "",
     dashboardEmbedUrl: "",
     dashboardImages: [],
@@ -149,8 +141,7 @@ export const projects: ProjectDefinition[] = [
     category: "Patent · Award-winning Project",
     summary:
       "MedConnect, an automated drug dispensing machine project recognized with a patent and Best Project Award.",
-    description:
-      "An automated drug dispensing machine project documented as MedConnect.",
+    description: "An automated drug dispensing machine project documented as MedConnect.",
     overview:
       "The available portfolio information identifies MedConnect as an automated drug dispensing machine. It is documented as a patented project and received a Best Project Award.",
     objectives: ["Develop an automated drug dispensing machine."],
@@ -174,7 +165,12 @@ export function getProjectBySlug(slug: string) {
 export function isValidGitHubRepositoryUrl(value: string) {
   try {
     const url = new URL(value);
-    return url.protocol === "https:" && (url.hostname === "github.com" || url.hostname === "www.github.com");
+    const pathSegments = url.pathname.split("/").filter(Boolean);
+    return (
+      url.protocol === "https:" &&
+      (url.hostname === "github.com" || url.hostname === "www.github.com") &&
+      pathSegments.length >= 2
+    );
   } catch {
     return false;
   }

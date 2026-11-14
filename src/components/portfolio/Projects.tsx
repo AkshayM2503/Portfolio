@@ -11,7 +11,11 @@ export function Projects() {
     <Section
       id="projects"
       eyebrow="Featured Projects"
-      title={<>Work that <span className="text-gradient">moves the needle</span>.</>}
+      title={
+        <>
+          Work that <span className="text-gradient">moves the needle</span>.
+        </>
+      }
       subtitle="Selected work across forecasting, motorsport analytics, synthetic data, machine learning, and health technology."
     >
       <Stagger className="grid gap-x-8 md:grid-cols-2" stagger={0.08}>

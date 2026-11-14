@@ -1,17 +1,8 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Expand, Github, MonitorPlay } from "lucide-react";
+import { ChevronLeft, ChevronRight, Expand, MonitorPlay } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  isValidDashboardEmbedUrl,
-  isValidGitHubRepositoryUrl,
-  type ProjectDefinition,
-} from "@/data/projects";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import { isValidDashboardEmbedUrl, type ProjectDefinition } from "@/data/projects";
 
 export function DashboardViewer({ project }: { project: ProjectDefinition }) {
   const images = project.dashboardImages;
@@ -19,8 +10,10 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
     ? project.dashboardEmbedUrl
     : "";
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [showImages, setShowImages] = useState(!embedUrl);
   const [enlarged, setEnlarged] = useState(false);
   const selectedImage = images[selectedIndex];
+  const showEmbed = Boolean(embedUrl && (!images.length || !showImages));
 
   function moveImage(direction: -1 | 1) {
     setSelectedIndex((current) => (current + direction + images.length) % images.length);
@@ -42,7 +35,28 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
         )}
       </div>
 
-      {embedUrl ? (
+      {embedUrl && images.length > 0 && (
+        <div className="mb-4 flex gap-2" aria-label="Dashboard viewing options">
+          <Button
+            variant={showImages ? "outline" : "secondary"}
+            size="sm"
+            onClick={() => setShowImages(false)}
+            aria-pressed={!showImages}
+          >
+            Interactive dashboard
+          </Button>
+          <Button
+            variant={showImages ? "secondary" : "outline"}
+            size="sm"
+            onClick={() => setShowImages(true)}
+            aria-pressed={showImages}
+          >
+            Screenshots
+          </Button>
+        </div>
+      )}
+
+      {showEmbed ? (
         <div className="overflow-hidden rounded-md border border-border bg-surface">
           <iframe
             src={embedUrl}
@@ -72,7 +86,12 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
           </button>
           {images.length > 1 && (
             <div className="mt-4 flex items-center justify-between gap-3">
-              <Button variant="outline" size="icon" onClick={() => moveImage(-1)} aria-label="Previous image">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => moveImage(-1)}
+                aria-label="Previous image"
+              >
                 <ChevronLeft aria-hidden="true" />
               </Button>
               <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto py-1">
@@ -84,7 +103,9 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
                     aria-label={`Show ${image.label ?? image.alt}`}
                     aria-current={index === selectedIndex ? "true" : undefined}
                     className={`min-w-24 max-w-40 flex-1 overflow-hidden rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-                      index === selectedIndex ? "border-primary" : "border-border opacity-70 hover:opacity-100"
+                      index === selectedIndex
+                        ? "border-primary"
+                        : "border-border opacity-70 hover:opacity-100"
                     }`}
                   >
                     <img src={image.src} alt="" className="aspect-video w-full object-cover" />
@@ -96,7 +117,12 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
                   </button>
                 ))}
               </div>
-              <Button variant="outline" size="icon" onClick={() => moveImage(1)} aria-label="Next image">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => moveImage(1)}
+                aria-label="Next image"
+              >
                 <ChevronRight aria-hidden="true" />
               </Button>
             </div>
@@ -117,7 +143,9 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
       {selectedImage && (
         <Dialog open={enlarged} onOpenChange={setEnlarged}>
           <DialogContent className="max-h-[95vh] max-w-[min(96vw,1400px)] overflow-auto border-border bg-background p-3 sm:p-5">
-            <DialogTitle className="pr-8 text-left">{selectedImage.label ?? project.title}</DialogTitle>
+            <DialogTitle className="pr-8 text-left">
+              {selectedImage.label ?? project.title}
+            </DialogTitle>
             <DialogDescription className="sr-only">Enlarged project screenshot</DialogDescription>
             <div className="relative flex items-center justify-center">
               {images.length > 1 && (
@@ -155,19 +183,6 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
             )}
           </DialogContent>
         </Dialog>
-      )}
-
-      {isValidGitHubRepositoryUrl(project.repositoryUrl) && (
-        <div className="mt-8 border-t border-border pt-6">
-          <a
-            href={project.repositoryUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-foreground underline-offset-4 hover:underline"
-          >
-            <Github aria-hidden="true" className="size-4" /> View GitHub repository
-          </a>
-        </div>
       )}
     </section>
   );

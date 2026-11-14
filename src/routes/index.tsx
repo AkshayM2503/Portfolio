@@ -23,7 +23,10 @@ export const Route = createFileRoute("/")({
         content:
           "Akshay Murali is an M.Sc. Computer Science student at RPTU, interested in Data Analyst and Business Intelligence opportunities.",
       },
-      { property: "og:title", content: "Akshay Murali — Data Analyst & Business Intelligence Portfolio" },
+      {
+        property: "og:title",
+        content: "Akshay Murali — Data Analyst & Business Intelligence Portfolio",
+      },
       {
         property: "og:description",
         content:
@@ -32,7 +35,10 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Akshay Murali — Data Analyst & Business Intelligence Portfolio" },
+      {
+        name: "twitter:title",
+        content: "Akshay Murali — Data Analyst & Business Intelligence Portfolio",
+      },
       {
         name: "twitter:description",
         content:
@@ -50,7 +56,8 @@ export const Route = createFileRoute("/")({
               "@type": "Person",
               "@id": "/#person",
               name: portfolio.name,
-              jobTitle: "M.Sc. Computer Science Student; Data Analyst and Business Intelligence interests",
+              jobTitle:
+                "M.Sc. Computer Science Student; Data Analyst and Business Intelligence interests",
               description: portfolio.tagline,
               email: `mailto:${portfolio.email}`,
               url: "/",

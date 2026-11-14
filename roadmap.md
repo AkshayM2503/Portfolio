@@ -1,4 +1,4 @@
-- [ ] Convert the homepage Projects section to concise overview cards linking to individual project pages.
-- [ ] Add structured content for the five requested projects without inventing unsupported details.
-- [ ] Build reusable responsive detail pages with optional dashboard embeds/image galleries, repository URLs, and direct navigation.
-- [ ] Validate the home-to-project flow, project routes, metadata, and app build; commit the completed changes.
+- [x] Convert the homepage Projects section to concise overview cards linking to individual project pages.
+- [x] Add structured content for the five requested projects without inventing unsupported details.
+- [x] Build reusable responsive detail pages with optional dashboard embeds/image galleries, repository URLs, and direct navigation.
+- [x] Validate the home-to-project flow, project routes, metadata, sitemap, and app build; commit the completed changes.
