@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Download, Github } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { DashboardViewer } from "@/components/portfolio/DashboardViewer";
@@ -68,6 +68,18 @@ export function ProjectDetail({ project }: { project: ProjectDefinition }) {
                   {technology}
                 </span>
               ))}
+            </div>
+          )}
+          {project.dashboardDownload && (
+            <div className="mt-8">
+              <Button asChild>
+                <a
+                  href={project.dashboardDownload.url}
+                  download={project.dashboardDownload.filename}
+                >
+                  <Download aria-hidden="true" /> Download Power BI Dashboard
+                </a>
+              </Button>
             </div>
           )}
           {isValidGitHubRepositoryUrl(project.repositoryUrl) && (

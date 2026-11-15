@@ -2,3 +2,5 @@
 - [x] Add structured content for the five requested projects without inventing unsupported details.
 - [x] Build reusable responsive detail pages with optional dashboard embeds/image galleries, repository URLs, and direct navigation.
 - [x] Validate the home-to-project flow, project routes, metadata, sitemap, and app build; commit the completed changes.
+- [x] Add the exact Weather Analytics and Formula 1 Power BI files as public project assets with filename-preserving download buttons.
+- [x] Verify both asset downloads byte-for-byte and through the project page buttons; run project tests and commit the changes.

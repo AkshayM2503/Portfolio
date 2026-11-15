@@ -1,3 +1,6 @@
+import f1DashboardAsset from "@/assets/F1_Analytics_Dashboard.pbix.asset.json";
+import weatherDashboardAsset from "@/assets/Weather_analytics.pbix.asset.json";
+
 export type ProjectImage = {
   src: string;
   alt: string;
@@ -19,6 +22,7 @@ export type ProjectDefinition = {
   repositoryUrl: string;
   dashboardEmbedUrl: string;
   dashboardImages: ProjectImage[];
+  dashboardDownload: { url: string; filename: string } | null;
 };
 
 // Add project screenshots under public/ and reference them from dashboardImages.
@@ -53,6 +57,10 @@ export const projects: ProjectDefinition[] = [
     repositoryUrl: "",
     dashboardEmbedUrl: "",
     dashboardImages: [],
+    dashboardDownload: {
+      url: weatherDashboardAsset.url,
+      filename: weatherDashboardAsset.original_filename,
+    },
   },
   {
     slug: "formula-1-analytics-driver-prediction",
@@ -86,6 +94,10 @@ export const projects: ProjectDefinition[] = [
     repositoryUrl: "",
     dashboardEmbedUrl: "",
     dashboardImages: [],
+    dashboardDownload: {
+      url: f1DashboardAsset.url,
+      filename: f1DashboardAsset.original_filename,
+    },
   },
   {
     slug: "synthetic-data-generator",
@@ -105,6 +117,7 @@ export const projects: ProjectDefinition[] = [
     repositoryUrl: "",
     dashboardEmbedUrl: "",
     dashboardImages: [],
+    dashboardDownload: null,
   },
   {
     slug: "fraud-detection-system",
@@ -134,6 +147,7 @@ export const projects: ProjectDefinition[] = [
     repositoryUrl: "",
     dashboardEmbedUrl: "",
     dashboardImages: [],
+    dashboardDownload: null,
   },
   {
     slug: "smart-medicine-dispensing-atm",
@@ -155,6 +169,7 @@ export const projects: ProjectDefinition[] = [
     repositoryUrl: "",
     dashboardEmbedUrl: "",
     dashboardImages: [],
+    dashboardDownload: null,
   },
 ];
 
