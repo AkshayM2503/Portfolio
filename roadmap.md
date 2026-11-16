@@ -4,3 +4,4 @@
 - [x] Validate the home-to-project flow, project routes, metadata, sitemap, and app build; commit the completed changes.
 - [x] Add the exact Weather Analytics and Formula 1 Power BI files as public project assets with filename-preserving download buttons.
 - [x] Verify both asset downloads byte-for-byte and through the project page buttons; run project tests and commit the changes.
+- [ ] Add the user-provided Formula 1 dashboard screenshots to a responsive, captioned project gallery without changing dashboard downloads.
