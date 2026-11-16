@@ -39,6 +39,24 @@ describe("project data and optional media links", () => {
     ).toBe(true);
   });
 
+  test("maps only the eight labeled Formula 1 dashboard screenshots to its gallery", () => {
+    const weather = projects.find((project) => project.slug === "weather-forecast-accuracy-analytics");
+    const formulaOne = projects.find((project) => project.slug === "formula-1-analytics-driver-prediction");
+
+    expect(weather?.dashboardImages).toEqual([]);
+    expect(formulaOne?.dashboardImages.map((image) => image.label)).toEqual([
+      "Overview",
+      "Driver Analytics",
+      "Constructor Analytics",
+      "Circuit Insights",
+      "Race Strategy",
+      "Recent Form",
+      "Prediction Model",
+      "Race Prediction",
+    ]);
+    expect(formulaOne?.dashboardImages.every((image) => image.src.startsWith("/__l5e/assets-v1/"))).toBe(true);
+  });
+
   test("accepts secure dashboard embeds and rejects non-HTTPS URLs", () => {
     expect(isValidDashboardEmbedUrl("https://app.powerbi.com/view?r=example")).toBe(true);
     expect(isValidDashboardEmbedUrl("http://example.com/dashboard")).toBe(false);

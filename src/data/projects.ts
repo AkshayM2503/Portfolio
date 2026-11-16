@@ -1,5 +1,13 @@
 import f1DashboardAsset from "@/assets/F1_Analytics_Dashboard.pbix.asset.json";
 import weatherDashboardAsset from "@/assets/Weather_analytics.pbix.asset.json";
+import f1Overview from "@/assets/projects/formula-1/01-overview.png.asset.json";
+import f1DriverAnalytics from "@/assets/projects/formula-1/02-driver-analytics.png.asset.json";
+import f1ConstructorAnalytics from "@/assets/projects/formula-1/03-constructor-analytics.png.asset.json";
+import f1CircuitInsights from "@/assets/projects/formula-1/04-circuit-insights.png.asset.json";
+import f1RaceStrategy from "@/assets/projects/formula-1/05-race-strategy.png.asset.json";
+import f1RecentForm from "@/assets/projects/formula-1/06-recent-form.png.asset.json";
+import f1PredictionModel from "@/assets/projects/formula-1/07-prediction-model.png.asset.json";
+import f1RacePrediction from "@/assets/projects/formula-1/08-race-prediction.png.asset.json";
 
 export type ProjectImage = {
   src: string;
@@ -93,7 +101,44 @@ export const projects: ProjectDefinition[] = [
     ],
     repositoryUrl: "",
     dashboardEmbedUrl: "",
-    dashboardImages: [],
+    dashboardImages: [
+      { src: f1Overview.url, alt: "Formula 1 analytics dashboard overview", label: "Overview" },
+      {
+        src: f1DriverAnalytics.url,
+        alt: "Formula 1 driver analytics dashboard with driver performance and qualifying comparisons",
+        label: "Driver Analytics",
+      },
+      {
+        src: f1ConstructorAnalytics.url,
+        alt: "Formula 1 constructor analytics dashboard with constructor performance and wins",
+        label: "Constructor Analytics",
+      },
+      {
+        src: f1CircuitInsights.url,
+        alt: "Formula 1 circuit insights dashboard with constructor wins and circuit position gain",
+        label: "Circuit Insights",
+      },
+      {
+        src: f1RaceStrategy.url,
+        alt: "Formula 1 race strategy dashboard with pit stop analysis",
+        label: "Race Strategy",
+      },
+      {
+        src: f1RecentForm.url,
+        alt: "Formula 1 recent form dashboard with recent driver results and trends",
+        label: "Recent Form",
+      },
+      {
+        src: f1PredictionModel.url,
+        alt: "Formula 1 prediction model dashboard with prediction score breakdown and factor weights",
+        label: "Prediction Model",
+      },
+      {
+        src: f1RacePrediction.url,
+        alt: "Formula 1 race prediction dashboard with predicted driver rankings",
+        label: "Race Prediction",
+      },
+    ],
     dashboardDownload: {
       url: f1DashboardAsset.url,
       filename: f1DashboardAsset.original_filename,

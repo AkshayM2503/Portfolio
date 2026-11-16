@@ -70,18 +70,6 @@ export function ProjectDetail({ project }: { project: ProjectDefinition }) {
               ))}
             </div>
           )}
-          {project.dashboardDownload && (
-            <div className="mt-8">
-              <Button asChild>
-                <a
-                  href={project.dashboardDownload.url}
-                  download={project.dashboardDownload.filename}
-                >
-                  <Download aria-hidden="true" /> Download Power BI Dashboard
-                </a>
-              </Button>
-            </div>
-          )}
           {isValidGitHubRepositoryUrl(project.repositoryUrl) && (
             <a
               href={project.repositoryUrl}
@@ -115,6 +103,19 @@ export function ProjectDetail({ project }: { project: ProjectDefinition }) {
         <DetailSection number="05" title="Results and achievements" items={project.results} />
 
         <DashboardViewer key={project.slug} project={project} />
+
+        {project.dashboardDownload && (
+          <div className="border-b border-border py-8">
+            <Button asChild>
+              <a
+                href={project.dashboardDownload.url}
+                download={project.dashboardDownload.filename}
+              >
+                <Download aria-hidden="true" /> Download Power BI Dashboard
+              </a>
+            </Button>
+          </div>
+        )}
 
         <div className="pt-8">
           <Button variant="outline" asChild>
