@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowUpRight, Download, Github } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { DashboardViewer } from "@/components/portfolio/DashboardViewer";
+import { ProjectDemo } from "@/components/portfolio/demos/ProjectDemo";
 import { isValidGitHubRepositoryUrl, type ProjectDefinition } from "@/data/projects";
 
 function DetailSection({
@@ -105,6 +106,8 @@ export function ProjectDetail({ project }: { project: ProjectDefinition }) {
         {project.slug !== 'synthetic-data-generator' && project.slug !== 'fraud-detection-system' && project.slug !== 'smart-medicine-dispensing-atm' && (
         <DashboardViewer key={project.slug} project={project} />
       )}
+
+        <ProjectDemo key={`demo-${project.slug}`} slug={project.slug} />
 
         {project.dashboardDownload && (
           <div className="border-b border-border py-8">
