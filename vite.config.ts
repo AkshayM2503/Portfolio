@@ -12,4 +12,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    // Allow the Emergent preview ingress hostnames (they vary per pod) to reach the dev server.
+    server: { allowedHosts: true },
+  },
 });

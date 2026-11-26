@@ -38,12 +38,12 @@ export const portfolio = {
     {
       category: "Data Analysis & Visualization",
       icon: "BarChart3",
-      items: ["Pandas", "NumPy", "Matplotlib", "Power BI", "Data Cleaning"],
+      items: ["Pandas", "NumPy", "Matplotlib", "Power BI", "Plotly", "Data Cleaning"],
     },
     {
       category: "Machine Learning",
       icon: "Brain",
-      items: ["Scikit-learn", "Random Forest", "XGBoost", "SVM", "Feature Engineering", "Model Evaluation"],
+      items: ["Scikit-learn", "Random Forest", "XGBoost", "SVM", "Feature Engineering", "Model Evaluation", "Predictive Analytics"],
     },
     {
       category: "Databases & Tools",
