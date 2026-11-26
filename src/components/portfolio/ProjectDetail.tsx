@@ -102,7 +102,9 @@ export function ProjectDetail({ project }: { project: ProjectDefinition }) {
         />
         <DetailSection number="05" title="Results and achievements" items={project.results} />
 
+        {project.slug !== 'synthetic-data-generator' && project.slug !== 'fraud-detection-system' && project.slug !== 'smart-medicine-dispensing-atm' && (
         <DashboardViewer key={project.slug} project={project} />
+      )}
 
         {project.dashboardDownload && (
           <div className="border-b border-border py-8">

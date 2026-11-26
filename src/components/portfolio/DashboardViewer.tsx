@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useEffect, useMemo, useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -8,20 +9,59 @@ import {
   ZoomOut,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import { isValidDashboardEmbedUrl, type ProjectDefinition } from "@/data/projects";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  isValidDashboardEmbedUrl,
+  type ProjectDefinition,
+} from "@/data/projects";
 
 const zoomClasses = ["scale-100", "scale-125", "scale-150", "scale-200"];
 
+const f1ImageOrder = [
+  "Overview",
+  "Driver Analytics",
+  "Constructor Analytics",
+  "Circuit Insights",
+  "Race Strategy",
+  "Recent Form",
+  "Prediction Model",
+  "Race Prediction",
+];
+
 export function DashboardViewer({ project }: { project: ProjectDefinition }) {
-  const images = project.dashboardImages;
+  const images = useMemo(() => {
+    if (project.slug !== "formula-1-analytics-driver-prediction") {
+      return project.dashboardImages;
+    }
+
+    return [...project.dashboardImages].sort(
+      (a, b) =>
+        f1ImageOrder.indexOf(a.label ?? "") -
+        f1ImageOrder.indexOf(b.label ?? "")
+    );
+  }, [project.slug, project.dashboardImages]);
+
   const embedUrl = isValidDashboardEmbedUrl(project.dashboardEmbedUrl)
     ? project.dashboardEmbedUrl
     : "";
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [showImages, setShowImages] = useState(!embedUrl);
   const [enlarged, setEnlarged] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(0);
+
+  useEffect(() => {
+    setSelectedIndex(0);
+    setZoomLevel(0);
+    setEnlarged(false);
+    setShowImages(!embedUrl);
+  }, [project.slug, embedUrl]);
+
   const selectedImage = images[selectedIndex];
   const showEmbed = Boolean(embedUrl && (!images.length || !showImages));
 
@@ -31,19 +71,28 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
   }
 
   function moveImage(direction: -1 | 1) {
-    setSelectedIndex((current) => (current + direction + images.length) % images.length);
+    setSelectedIndex(
+      (current) => (current + direction + images.length) % images.length
+    );
     setZoomLevel(0);
   }
 
   return (
-    <section aria-labelledby="dashboard-heading" className="border-y border-border py-12 sm:py-16">
+    <section
+      aria-labelledby="dashboard-heading"
+      className="border-y border-border py-12 sm:py-16"
+    >
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-sm font-medium text-secondary">Project gallery</p>
-          <h2 id="dashboard-heading" className="mt-2 font-display text-2xl font-semibold">
+          <h2
+            id="dashboard-heading"
+            className="mt-2 font-display text-2xl font-semibold"
+          >
             Dashboard Preview
           </h2>
         </div>
+
         {images.length > 0 && (
           <Button
             variant="outline"
@@ -66,6 +115,7 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
           >
             Interactive dashboard
           </Button>
+
           <Button
             variant={showImages ? "secondary" : "outline"}
             size="sm"
@@ -94,30 +144,47 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
             variant="outline"
             className="group relative h-auto w-full overflow-hidden whitespace-normal p-2"
             onClick={() => setEnlarged(true)}
-            aria-label={`Open ${selectedImage.label ?? selectedImage.alt} screenshot in full-screen view`}
+            aria-label={`Open ${
+              selectedImage.label ?? selectedImage.alt
+            } screenshot in full-screen view`}
           >
             <img
               src={selectedImage.src}
               alt={selectedImage.alt}
               className="h-auto max-h-[78vh] w-full object-contain"
             />
+
             <span className="absolute bottom-4 right-4 grid size-10 place-items-center rounded-md border border-border bg-background/90 text-foreground opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
               <Expand aria-hidden="true" className="size-4" />
             </span>
           </Button>
+
           {selectedImage.label && (
-            <p className="mt-3 text-sm font-medium text-muted-foreground">{selectedImage.label}</p>
+            <p className="mt-3 text-sm font-semibold text-foreground">
+              {selectedImage.label}
+            </p>
+          )}
+
+          {selectedImage.description && selectedImage.label !== "Overview" && (
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {selectedImage.description}
+            </p>
           )}
 
           {images.length > 1 && (
             <div className="mt-8">
-              <h3 className="mb-4 font-display text-lg font-semibold">All dashboard pages</h3>
+              <h3 className="mb-4 font-display text-lg font-semibold">
+                All dashboard pages
+              </h3>
+
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {images.map((image, index) => (
                   <Button
                     variant="outline"
                     className={`h-auto min-w-0 flex-col items-stretch whitespace-normal p-2 text-left ${
-                      index === selectedIndex ? "border-primary" : "border-border"
+                      index === selectedIndex
+                        ? "border-primary"
+                        : "border-border"
                     }`}
                     key={`${image.src}-${index}`}
                     onClick={() => {
@@ -125,7 +192,9 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
                       setEnlarged(true);
                     }}
                     aria-label={`Open ${image.label ?? image.alt} screenshot`}
-                    aria-current={index === selectedIndex ? "true" : undefined}
+                    aria-current={
+                      index === selectedIndex ? "true" : undefined
+                    }
                   >
                     <img
                       src={image.src}
@@ -133,9 +202,16 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
                       loading="lazy"
                       className="h-auto w-full object-contain"
                     />
+
                     {image.label && (
                       <span className="block px-2 pb-1 pt-3 text-sm font-medium text-foreground">
                         {image.label}
+                      </span>
+                    )}
+
+                    {image.description && (
+                      <span className="block px-2 pb-2 text-xs leading-relaxed text-muted-foreground">
+                        {image.description}
                       </span>
                     )}
                   </Button>
@@ -147,8 +223,13 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
       ) : (
         <div className="flex min-h-56 items-center justify-center rounded-md border border-dashed border-border px-6 py-10 text-center">
           <div>
-            <MonitorPlay aria-hidden="true" className="mx-auto size-6 text-muted-foreground" />
-            <p className="mt-3 font-medium">Dashboard preview will appear here</p>
+            <MonitorPlay
+              aria-hidden="true"
+              className="mx-auto size-6 text-muted-foreground"
+            />
+            <p className="mt-3 font-medium">
+              Dashboard preview will appear here
+            </p>
             <p className="mt-1 text-sm text-muted-foreground">
               No dashboard embed or project screenshots have been added yet.
             </p>
@@ -171,27 +252,44 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
             }}
           >
             <div className="flex flex-wrap items-center justify-between gap-3 pr-8">
-              <DialogTitle className="text-left">
-                {selectedImage.label ?? project.title}
-              </DialogTitle>
+              <div>
+                <DialogTitle className="text-left">
+                  {selectedImage.label ?? project.title}
+                </DialogTitle>
+
+                {selectedImage.description && (
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {selectedImage.description}
+                  </p>
+                )}
+              </div>
+
               <div className="flex items-center gap-2">
                 <Button
                   variant="outline"
                   size="icon"
-                  onClick={() => setZoomLevel((level) => Math.max(0, level - 1))}
+                  onClick={() =>
+                    setZoomLevel((level) => Math.max(0, level - 1))
+                  }
                   disabled={zoomLevel === 0}
                   aria-label="Zoom out"
                   title="Zoom out"
                 >
                   <ZoomOut aria-hidden="true" />
                 </Button>
+
                 <span className="min-w-12 text-center text-sm text-muted-foreground">
                   {100 + zoomLevel * 25}%
                 </span>
+
                 <Button
                   variant="outline"
                   size="icon"
-                  onClick={() => setZoomLevel((level) => Math.min(zoomClasses.length - 1, level + 1))}
+                  onClick={() =>
+                    setZoomLevel((level) =>
+                      Math.min(zoomClasses.length - 1, level + 1)
+                    )
+                  }
                   disabled={zoomLevel === zoomClasses.length - 1}
                   aria-label="Zoom in"
                   title="Zoom in"
@@ -200,7 +298,11 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
                 </Button>
               </div>
             </div>
-            <DialogDescription className="sr-only">Enlarged project screenshot</DialogDescription>
+
+            <DialogDescription className="sr-only">
+              Enlarged project screenshot
+            </DialogDescription>
+
             <div className="relative flex max-h-[78vh] min-h-0 items-center justify-center overflow-auto">
               {images.length > 1 && (
                 <Button
@@ -213,11 +315,13 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
                   <ChevronLeft aria-hidden="true" />
                 </Button>
               )}
+
               <img
                 src={selectedImage.src}
                 alt={selectedImage.alt}
                 className={`h-auto max-h-[75vh] w-full shrink-0 object-contain transition-transform ${zoomClasses[zoomLevel]}`}
               />
+
               {images.length > 1 && (
                 <Button
                   variant="outline"
@@ -230,13 +334,38 @@ export function DashboardViewer({ project }: { project: ProjectDefinition }) {
                 </Button>
               )}
             </div>
+
             {images.length > 1 && (
               <p className="text-center text-sm text-muted-foreground">
-                {selectedIndex + 1} of {images.length} · Use the arrow keys to navigate
+                {selectedIndex + 1} of {images.length} · Use the arrow keys to
+                navigate
               </p>
             )}
           </DialogContent>
         </Dialog>
+      )}
+
+      {project.architectureImage && (
+        <section aria-labelledby="architecture-heading" className="mt-12">
+          <h2
+            id="architecture-heading"
+            className="text-2xl font-display font-semibold"
+          >
+            System Architecture
+          </h2>
+
+          <img
+            src={project.architectureImage.src}
+            alt={project.architectureImage.alt}
+            className="mt-4 max-w-full h-auto object-contain"
+          />
+
+          {project.architectureImage.label && (
+            <p className="mt-2 text-sm text-muted-foreground">
+              {project.architectureImage.label}
+            </p>
+          )}
+        </section>
       )}
     </section>
   );

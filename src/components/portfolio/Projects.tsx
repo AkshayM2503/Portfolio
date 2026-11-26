@@ -1,3 +1,4 @@
+
 import { Section } from "./Section";
 import { Stagger, itemVariants } from "./Reveal";
 import { motion } from "framer-motion";
@@ -27,9 +28,19 @@ export function Projects() {
             transition={{ type: "spring", stiffness: 240, damping: 22 }}
             className="group flex min-w-0 flex-col border-t border-border py-7 sm:py-8"
           >
+            {/* Preview image */}
+            {project.slug !== "smart-medicine-dispensing-atm" &&
+              project.dashboardImages &&
+              project.dashboardImages.length > 0 && (
+                <img
+                  src={project.dashboardImages[0].src}
+                  alt={project.dashboardImages[0].alt ?? `${project.title} preview`}
+                  className="w-full h-48 object-contain rounded-md mb-4"
+                />
+              )}
             <div className="flex items-start justify-between gap-4">
               <p className="font-mono text-xs text-secondary">0{index + 1}</p>
-              <p className="text-right text-xs text-muted-foreground">{project.category}</p>
+              <p className="inline-flex items-center justify-center rounded-md border border-slate-700/70 bg-slate-800/30 px-3 py-1.5 text-sm font-medium text-muted-foreground">{project.category}</p>
             </div>
             <h3 className="mt-5 font-display text-xl font-semibold leading-snug">
               {project.title}
