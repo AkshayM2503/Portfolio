@@ -19,10 +19,13 @@ import {
 } from "@/data/demos/weather";
 import { DemoShell, SimulatedNotice } from "./DemoShell";
 import { Field, Stat, fieldClass } from "./controls";
+import { useTheme } from "@/lib/theme";
 
 export function WeatherDemo() {
   const [city, setCity] = useState<WeatherCity>("Delhi");
   const [leadTime, setLeadTime] = useState<LeadTime>(1);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const samples = useMemo(() => getWeatherSamples(city, leadTime), [city, leadTime]);
   const metrics = getErrorMetrics(samples);
 
@@ -86,8 +89,8 @@ export function WeatherDemo() {
       <div className="mt-6 h-64 w-full" data-testid="weather-chart">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={samples} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
-            <CartesianGrid stroke="rgba(255,255,255,0.08)" />
-            <XAxis dataKey="date" tick={{ fill: "#94A3B8", fontSize: 12 }} />
+            <CartesianGrid stroke={isDark ? "rgba(255,255,255,0.08)" : "rgba(15,23,42,0.1)"} />
+            <XAxis dataKey="date" tick={{ fill: isDark ? "#94A3B8" : "#64748B", fontSize: 12 }} />
             <YAxis
               domain={[(min: number) => Math.floor(min - 2), (max: number) => Math.ceil(max + 2)]}
               allowDecimals={false}
@@ -96,8 +99,10 @@ export function WeatherDemo() {
             />
             <Tooltip
               contentStyle={{
-                background: "#111827",
-                border: "1px solid rgba(255,255,255,0.1)",
+                background: isDark ? "#111827" : "#ffffff",
+                border: isDark
+                  ? "1px solid rgba(255,255,255,0.1)"
+                  : "1px solid rgba(15,23,42,0.1)",
                 borderRadius: 8,
               }}
             />

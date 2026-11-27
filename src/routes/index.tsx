@@ -13,6 +13,7 @@ import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
 import { portfolio } from "@/data/portfolio";
 import { projects } from "@/data/projects";
+import { useTheme } from "@/lib/theme";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -189,6 +190,8 @@ export const Route = createFileRoute("/")({
 });
 
 function PortfolioPage() {
+  const { theme } = useTheme();
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar />
@@ -204,7 +207,7 @@ function PortfolioPage() {
         <Contact />
       </main>
       <Footer />
-      <Toaster theme="dark" position="bottom-right" />
+      <Toaster theme={theme} position="bottom-right" />
     </div>
   );
 }
