@@ -1,5 +1,3 @@
-import resumeAsset from "@/assets/Akshay_Murali_CV_final.pdf.asset.json";
-
 export const portfolio = {
   name: "Akshay Murali",
   shortName: "Akshay M",
@@ -9,7 +7,7 @@ export const portfolio = {
   email: "25akshay.m@gmail.com",
   linkedin: "https://www.linkedin.com/in/akshay-m-009a7b257",
   github: "https://github.com/AkshayM2503",
-  resume: resumeAsset.url,
+  resume: "https://drive.google.com/file/d/1adjdv28SUYfzMGBOtiX04DaghXD0Q_xg/view?usp=sharing",
   tagline:
     "Data-focused Computer Science graduate and M.Sc. student turning complex datasets into useful analysis, dashboards, and actionable insights.",
   typingRoles: [
