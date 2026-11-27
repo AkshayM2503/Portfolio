@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, Moon, Sun } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
+import { useTheme } from "@/lib/theme";
 
 const links = [
   { href: "#about", label: "About" },
@@ -16,6 +17,7 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -51,7 +53,7 @@ export function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
+                  className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-tint hover:text-foreground"
                 >
                   {l.label}
                 </a>
@@ -69,8 +71,19 @@ export function Navbar() {
             </a>
             <button
               type="button"
+              onClick={toggleTheme}
+              className="relative grid size-10 place-items-center rounded-lg border border-tint-strong bg-tint text-foreground transition-colors hover:bg-tint-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              aria-pressed={theme === "light"}
+              title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              <Sun className="size-5 rotate-90 scale-0 transition-transform duration-300 light:rotate-0 light:scale-100" aria-hidden="true" />
+              <Moon className="absolute size-5 rotate-0 scale-100 transition-transform duration-300 light:-rotate-90 light:scale-0" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
               onClick={() => setOpen((v) => !v)}
-              className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-foreground md:hidden"
+              className="grid size-10 place-items-center rounded-lg border border-tint-strong bg-tint text-foreground md:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
             >
@@ -87,7 +100,7 @@ export function Navbar() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                    className="block rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-tint hover:text-foreground"
                   >
                     {l.label}
                   </a>

@@ -123,7 +123,7 @@ export function Skills() {
               role="tablist"
               aria-label="Skill categories"
               onKeyDown={handleTablistKeyDown}
-              className="flex flex-wrap gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-1.5 backdrop-blur-md"
+              className="flex flex-wrap gap-2 rounded-2xl border border-tint-strong bg-tint/60 p-1.5 backdrop-blur-md"
             >
               {skillGroups.map((group, index) => {
                 const Icon = categoryIcons[group.icon] ?? Code2;
@@ -145,7 +145,7 @@ export function Skills() {
                     className={`inline-flex cursor-pointer items-center gap-2 rounded-xl border px-3.5 py-2 text-xs font-medium transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 sm:text-sm ${
                       isActive
                         ? "border-primary/50 bg-primary/20 text-foreground shadow-[0_0_20px_rgba(139,92,246,0.25)]"
-                        : "border-transparent text-muted-foreground hover:bg-white/[0.04] hover:text-foreground"
+                        : "border-transparent text-muted-foreground hover:bg-tint hover:text-foreground"
                     }`}
                   >
                     <Icon
@@ -184,10 +184,10 @@ export function Skills() {
                         onClick={() => setSelectedSkill(skill)}
                         aria-haspopup="dialog"
                         data-testid={`skill-card-${skillSlug(skill.name)}`}
-                        className="group flex h-full w-full cursor-pointer flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-4 text-left backdrop-blur-md transition duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/40 hover:bg-white/[0.07] hover:shadow-lg hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                        className="group flex h-full w-full cursor-pointer flex-col gap-3 rounded-xl border border-tint-strong bg-tint p-4 text-left backdrop-blur-md transition duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/40 hover:bg-tint-strong hover:shadow-lg hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       >
                         <span className="flex items-start justify-between gap-2">
-                          <span className="grid size-9 place-items-center rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 ring-1 ring-white/10">
+                          <span className="grid size-9 place-items-center rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 ring-1 ring-tint-strong">
                             <Icon className="size-4 text-primary" aria-hidden="true" />
                           </span>
                           {count > 0 && (
@@ -229,13 +229,13 @@ export function Skills() {
       >
         <DialogContent
           data-testid="skill-projects-dialog"
-          className="w-[calc(100vw-2rem)] gap-0 rounded-2xl border-white/10 p-6 sm:w-full"
+          className="w-[calc(100vw-2rem)] gap-0 rounded-2xl border-tint-strong p-6 sm:w-full"
         >
           {selectedSkill && (
             <>
               <DialogHeader>
                 <div className="flex items-center gap-3">
-                  <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 ring-1 ring-white/10">
+                  <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 ring-1 ring-tint-strong">
                     {(() => {
                       const Icon = skillIcons[selectedSkill.name] ?? Sparkles;
                       return <Icon className="size-5 text-primary" aria-hidden="true" />;
@@ -260,13 +260,13 @@ export function Skills() {
                     <div
                       key={project.slug}
                       data-testid={`dialog-project-item-${project.slug}`}
-                      className="rounded-xl border border-white/10 bg-white/[0.04] p-4"
+                      className="rounded-xl border border-tint-strong bg-tint p-4"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <h4 className="font-display text-base font-semibold leading-snug">
                           {project.title}
                         </h4>
-                        <span className="shrink-0 rounded-md border border-slate-700/70 bg-slate-800/30 px-2 py-1 text-[11px] text-muted-foreground">
+                        <span className="shrink-0 rounded-md border border-tint-strong bg-tint px-2 py-1 text-[11px] text-muted-foreground">
                           {project.category}
                         </span>
                       </div>
@@ -298,9 +298,9 @@ export function Skills() {
                 ) : (
                   <div
                     data-testid="skill-empty-state"
-                    className="rounded-xl border border-dashed border-white/10 bg-white/[0.02] p-6 text-center"
+                    className="rounded-xl border border-dashed border-tint-strong bg-tint/50 p-6 text-center"
                   >
-                    <span className="mx-auto grid size-10 place-items-center rounded-lg bg-white/5 ring-1 ring-white/10">
+                    <span className="mx-auto grid size-10 place-items-center rounded-lg bg-tint ring-1 ring-tint-strong">
                       <FolderGit2 className="size-5 text-muted-foreground" aria-hidden="true" />
                     </span>
                     <p className="mt-3 font-display text-sm font-semibold">

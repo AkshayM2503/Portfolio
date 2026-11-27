@@ -12,7 +12,7 @@ export function Experience() {
       subtitle="Internships building data pipelines, ML workflows, and developer tooling for real teams."
     >
       <div className="relative">
-        <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary/60 via-white/10 to-transparent md:left-1/2" />
+        <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary/60 via-tint-strong to-transparent md:left-1/2" />
         <ul className="space-y-12">
           {portfolio.experience.map((exp, i) => (
             <li
@@ -49,7 +49,7 @@ export function Experience() {
                       {exp.stack.map((t) => (
                         <span
                           key={t}
-                          className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-muted-foreground"
+                          className="rounded-md border border-tint-strong bg-tint px-2.5 py-1 text-xs text-muted-foreground"
                         >
                           {t}
                         </span>

@@ -91,7 +91,7 @@ export function WeatherDemo() {
             <YAxis
               domain={[(min: number) => Math.floor(min - 2), (max: number) => Math.ceil(max + 2)]}
               allowDecimals={false}
-              tick={{ fill: "#94A3B8", fontSize: 12 }}
+              tick={{ fill: isDark ? "#94A3B8" : "#64748B", fontSize: 12 }}
               unit="°"
             />
             <Tooltip

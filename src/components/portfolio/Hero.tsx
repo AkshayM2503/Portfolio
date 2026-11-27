@@ -27,7 +27,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-muted-foreground backdrop-blur">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-tint-strong bg-tint px-3 py-1.5 text-xs text-muted-foreground backdrop-blur">
             <Sparkles className="size-3.5 text-secondary" />
             M.Sc. Computer Science Student · RPTU
           </div>
@@ -66,13 +66,13 @@ export function Hero() {
             <a
               href={portfolio.resume}
               download
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-foreground backdrop-blur transition-colors hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-xl border border-tint-strong bg-tint px-5 py-3 text-sm font-medium text-foreground backdrop-blur transition-colors hover:bg-tint-strong"
             >
               <Download className="size-4" /> Download Resume
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-5 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-2 rounded-xl border border-tint-strong px-5 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               Contact Me
             </a>
@@ -95,12 +95,12 @@ export function Hero() {
               <motion.div
                 animate={reduce ? undefined : { rotate: 360 }}
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-[-18px] rounded-full border border-dashed border-white/20"
+                className="absolute inset-[-18px] rounded-full border border-dashed border-tint-strong"
               />
               <motion.div
                 animate={reduce ? undefined : { rotate: -360 }}
                 transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-[-36px] rounded-full border border-white/10"
+                className="absolute inset-[-36px] rounded-full border border-tint-strong"
               />
             </div>
 

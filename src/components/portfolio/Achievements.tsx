@@ -23,7 +23,7 @@ export function Achievements() {
               whileHover={{ y: -4 }}
               className="glass relative overflow-hidden rounded-2xl p-6"
             >
-              <div className="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-primary/25 to-accent/25 ring-1 ring-white/10">
+              <div className="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-primary/25 to-accent/25 ring-1 ring-tint-strong">
                 <Icon className="size-5 text-secondary" />
               </div>
               <h3 className="mt-4 font-display text-base font-semibold">{a.title}</h3>

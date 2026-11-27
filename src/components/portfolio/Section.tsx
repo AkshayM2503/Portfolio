@@ -24,7 +24,7 @@ export function Section({
         {(eyebrow || title || subtitle) && (
           <div className="mb-14 max-w-2xl">
             {eyebrow && (
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-tint-strong bg-tint px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
                 <span className="size-1.5 rounded-full bg-primary" />
                 {eyebrow}
               </div>

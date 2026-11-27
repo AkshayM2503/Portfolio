@@ -3,7 +3,7 @@ import { portfolio } from "@/data/portfolio";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/10 py-12">
+    <footer className="relative border-t border-tint-strong py-12">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 sm:flex-row">
         <div className="text-sm text-muted-foreground">
           © {new Date().getFullYear()} {portfolio.name}. Crafted with care.
@@ -14,7 +14,7 @@ export function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-muted-foreground transition-colors hover:text-foreground"
+            className="grid size-10 place-items-center rounded-lg border border-tint-strong bg-tint text-muted-foreground transition-colors hover:text-foreground"
           >
             <Github className="size-4" />
           </a>
@@ -23,21 +23,21 @@ export function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-muted-foreground transition-colors hover:text-foreground"
+            className="grid size-10 place-items-center rounded-lg border border-tint-strong bg-tint text-muted-foreground transition-colors hover:text-foreground"
           >
             <Linkedin className="size-4" />
           </a>
           <a
             href={`mailto:${portfolio.email}`}
             aria-label="Email"
-            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-muted-foreground transition-colors hover:text-foreground"
+            className="grid size-10 place-items-center rounded-lg border border-tint-strong bg-tint text-muted-foreground transition-colors hover:text-foreground"
           >
             <Mail className="size-4" />
           </a>
           <a
             href={portfolio.resume}
             download
-            className="ml-1 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="ml-1 rounded-lg border border-tint-strong bg-tint px-3 py-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Resume
           </a>

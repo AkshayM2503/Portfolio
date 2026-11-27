@@ -117,7 +117,7 @@ export function Contact() {
                   name="message"
                   rows={5}
                   placeholder="Tell me about the role or project…"
-                  className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm placeholder:text-muted-foreground focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  className="w-full resize-none rounded-xl border border-tint-strong bg-tint px-4 py-3 text-sm placeholder:text-muted-foreground focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
                 {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
               </div>
@@ -145,7 +145,7 @@ export function Contact() {
             {socials.map(({ icon: Icon, label, value, href }) => {
               const inner = (
                 <div className="glass group flex items-center gap-4 rounded-2xl p-4 transition-colors hover:border-primary/40">
-                  <div className="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 ring-1 ring-white/10">
+                  <div className="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 ring-1 ring-tint-strong">
                     <Icon className="size-5 text-primary" />
                   </div>
                   <div className="min-w-0">
@@ -157,7 +157,7 @@ export function Contact() {
                       type="button"
                       onClick={onCopyEmail}
                       aria-label="Copy email address to clipboard"
-                      className="ml-auto rounded-md border border-white/10 bg-white/5 p-2 text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:outline-none"
+                      className="ml-auto rounded-md border border-tint-strong bg-tint p-2 text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:outline-none"
                     >
                       {copied ? (
                         <CheckCircle2 className="size-4 text-primary" />
@@ -196,7 +196,7 @@ function SetupNotice() {
   return (
     <div className="glass rounded-3xl border-amber-400/30 p-6 sm:p-8" role="note">
       <div className="flex items-center gap-3">
-        <div className="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 ring-1 ring-white/10">
+        <div className="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 ring-1 ring-tint-strong">
           <AlertCircle className="size-5 text-primary" />
         </div>
         <div>
@@ -231,7 +231,7 @@ function SuccessBanner() {
   return (
     <div
       role="status"
-      className="flex items-center gap-3 rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-300"
+      className="flex items-center gap-3 rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-700 light:text-emerald-800"
     >
       <CheckCircle2 className="size-5 shrink-0" />
       <p>Message sent successfully. Thanks for reaching out!</p>
@@ -274,7 +274,7 @@ function Field({
         name={name}
         type={type}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm placeholder:text-muted-foreground focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/30"
+        className="w-full rounded-xl border border-tint-strong bg-tint px-4 py-3 text-sm placeholder:text-muted-foreground focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/30"
       />
       {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
     </div>
